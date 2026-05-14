@@ -26,5 +26,8 @@ urlpatterns = [
     path('courses/', include('cources.urls')),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('courses/', include('cources.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
