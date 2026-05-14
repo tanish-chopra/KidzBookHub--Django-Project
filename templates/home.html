@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Welcome to KidsBookHub - Free Books for Children{% endblock %}
+
+{% block content %}
+<div class="jumbotron bg-light p-5 rounded-3 mb-4" style="background-color: #FFE5E5 !important;">
+    <h1 class="display-4" style="color: #FF6B6B;">Welcome to KidsBookHub! 📚</h1>
+    <p class="lead" style="color: #4A90E2;">Free educational books for children from Grade 1 to 5</p>
+    <p>Choose your grade below to find amazing books for learning!</p>
+</div>
+
+<div class="grade-filter text-center mb-4">
+    <h2 style="color: #4A90E2;">Select Your Grade</h2>
+    <div class="row justify-content-center mt-3">
+        {% for grade in '12345'|make_list %}
+        <div class="col-md-2 col-sm-4 mb-3">
+            <a href="{% url 'courses:course_list' %}?grade={{ grade }}" class="btn btn-primary btn-lg w-100">
+                Grade {{ grade }}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<h2 class="text-center mb-4" style="color: #4A90E2;">Our Subjects</h2>
+<div class="row mb-4">
+    <div class="col-md-4 mb-3">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <div class="subject-icon">📐</div>
+                <h5 class="card-title">Mathematics</h5>
+                <a href="{% url 'courses:course_list' %}?subject=math" class="btn btn-primary w-75">Math Books</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <div class="subject-icon">क</div>
+                <h5 class="card-title">Marathi</h5>
+                <a href="{% url 'courses:course_list' %}?subject=marathi" class="btn btn-primary w-75">Marathi Books</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <div class="subject-icon"><img src="{% static 'images/abc-book.svg' %}" alt="English" style="width: 40px; height: 40px;"></div>
+                <h5 class="card-title">English</h5>
+                <a href="{% url 'courses:course_list' %}?subject=english" class="btn btn-primary w-75">English Books</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Free Educational Books{% endblock %}
+
+{% block content %}
+<div class="grade-filter">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h3>Grade Level</h3>
+            <div class="btn-group mb-3">
+                {% for grade in '12345'|make_list %}
+                <a href="?grade={{ grade }}{% if current_subject %}&subject={{ current_subject }}{% endif %}" 
+                   class="btn {% if current_grade == grade %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                    Grade {{ grade }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>Subjects</h3>
+            <div class="btn-group mb-3">
+                <a href="?subject=math{% if current_grade %}&grade={{ current_grade }}{% endif %}" 
+                   class="btn {% if current_subject == 'math' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                    📐 Math
+                </a>
+                <a href="?subject=marathi{% if current_grade %}&grade={{ current_grade }}{% endif %}" 
+                   class="btn {% if current_subject == 'marathi' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                    क Marathi
+                </a>
+                <a href="?subject=english{% if current_grade %}&grade={{ current_grade }}{% endif %}" 
+                   class="btn {% if current_subject == 'english' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                    📚 English
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {% for book in books %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            {% if book.cover_image %}
+            <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }} cover">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <p class="card-text">{{ book.description|truncatewords:30 }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-primary">Grade {{ book.grade }}</span>
+                    <span class="badge bg-info">{{ book.get_subject_display }}</span>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-top-0">
+                <div class="d-flex justify-content-end">
+                    <div class="action-buttons">
+                        {% if book.allow_online_reading %}
+                        <a href="{% url 'courses:read_book' book.id %}" class="btn btn-success btn-sm me-2">
+                            Read Online 📖
+                        </a>
+                        {% endif %}
+                        <a href="{% url 'courses:download_book' book.id %}" class="btn btn-primary btn-sm">
+                            Download PDF 📚
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info">
+            No books available for the selected filters. Try different grade or subject!
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

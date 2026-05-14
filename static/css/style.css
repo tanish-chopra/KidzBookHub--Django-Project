@@ -1,0 +1,85 @@
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: #f0f7ff;
+}
+
+.navbar {
+    background-color: #FFE5E5;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.kids-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FF6B6B;
+}
+
+.nav-text {
+    font-size: 1.2rem;
+    color: #4A90E2;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    color: #4A90E2;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.btn {
+    border: none;
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-size: 1.1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+    background-color: #4A90E2;
+}
+
+.btn-primary:hover {
+    background-color: #357ABD;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.grade-filter {
+    background-color: #E3F2FD;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.subject-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
