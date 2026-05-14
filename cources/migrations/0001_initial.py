@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('completion_date', models.DateTimeField(auto_now_add=True)),
                 ('certificate_number', models.CharField(max_length=50, unique=True)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('course', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='courses.course')),
+                ('course', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cources.course')),
             ],
         ),
     ]
